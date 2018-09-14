@@ -1,3 +1,4 @@
 1. 553 mail from must authorized user
+    解决：发送方（from属性）的邮箱格式要与smtp授权的邮箱格式一致，即邮箱@后面的字段相同
 
   
