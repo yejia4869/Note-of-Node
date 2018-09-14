@@ -1,0 +1,31 @@
+发送邮件步骤：
+    1、npm nodemailer 
+        并且在代码中引入：var nodemailer = require('nodemailer');
+
+    2、创建一个“传输”传输对象: let transporter =  nodemailer.createTransport();
+    
+        a.参数是一个对象，添加一些对象参数：
+             service: 选择邮箱服务端，例如qq、gmail等。查看nodemailer支持的完整列表，https://nodemailer.com/smtp/well-known/
+             host: 列表中没有支持的，可自定义邮箱服务端
+             auth: {
+                user: '已开通的smtp功能的邮箱',
+                password: 'smtp授权码'
+             }
+             port: 默认端口465
+    
+    3、 发送邮件: transporter.sendMail();
+    
+        参数:
+        a.对象：
+            from: '发送方'
+            to: '接收方' //可写多个或者建立一个邮箱地址的数组来遍历
+            subject: 主题信息
+            html: 发送html邮件内容
+            text: 发送纯文本内容
+            generateTextFromHtml: true //通过html生成文本内容
+            
+        b.回调函数：
+            function(err){ /*处理error*/}
+            
+        
+    
