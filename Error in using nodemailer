@@ -14,3 +14,6 @@
     
 3. cannot see headers after they are sent
     解决：查看是否中间件或路由处理器件的next()前面没有加return
+
+4. missing credentials for 'PLAIN'
+    原因：检查service或host约定的邮箱与user的邮箱不一致；密码缺失
