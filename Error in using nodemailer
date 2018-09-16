@@ -1,16 +1,5 @@
 1. 553 mail from must authorized user
     解决：发送方（from属性）的邮箱格式要与smtp授权的邮箱格式一致，即邮箱@后面的字段相同
-
-2. Cannot create property 'mailer' on string 'SMTP'
-    下列代码会引发这种错误
-        var mailTransport = nodemailer.createTransport('SMTP',{
-            service: 'qq',
-            auth: {
-                user: credentials.qq.user,
-                pass: credentials.qq.password,
-            }
-        });
-    解决：将'SMTP'去掉就不报错
     
 3. cannot see headers after they are sent
     解决：查看是否中间件或路由处理器件的next()前面没有加return
