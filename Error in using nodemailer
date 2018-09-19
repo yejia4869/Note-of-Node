@@ -6,3 +6,7 @@
 
 4. missing credentials for 'PLAIN'
     原因：检查service或host约定的邮箱与user的邮箱不一致；密码缺失
+    
+Other error: 
+5. cannot read property 'XXX' of undefined
+    
