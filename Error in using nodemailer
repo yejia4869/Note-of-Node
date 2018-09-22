@@ -9,4 +9,9 @@
     
 Other error: 
 5. cannot read property 'XXX' of undefined
+    解决：检查package的版本
     
+6. chrome error该网页无法正常显示
+    原因：可能重定向次数过多
+    解决：尝试清除cookies（或者直接清除历史记录）
+
