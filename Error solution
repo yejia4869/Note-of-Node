@@ -1,17 +1,19 @@
-1. 553 mail from must authorized user
+Nodemailer error
+    1. 553 mail from must authorized user
     解决：发送方（from属性）的邮箱格式要与smtp授权的邮箱格式一致，即邮箱@后面的字段相同
     
-3. cannot see headers after they are sent
+    2. cannot see headers after they are sent
     解决：查看是否中间件或路由处理器件的next()前面没有加return
 
-4. missing credentials for 'PLAIN'
+    3. missing credentials for 'PLAIN'
     原因：检查service或host约定的邮箱与user的邮箱不一致；密码缺失
-    
-Other error: 
-5. cannot read property 'XXX' of undefined
-    解决：检查package的版本
-    
-6. chrome error该网页无法正常显示
+
+Web error
+    1. chrome error该网页无法正常显示
     原因：可能重定向次数过多
     解决：尝试清除cookies（或者直接清除历史记录）
+    
+Other error: 
+    1. cannot read property 'XXX' of undefined
+    解决：检查package的版本
 
