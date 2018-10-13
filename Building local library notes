@@ -1,3 +1,20 @@
-模版template
-  1.两种类型模版： 一种是类html格式，例如handlebars
+一、模版template
+    1.两种类型模版： 
+        一种是类html格式，例如handlebars；一种是省略html语法的<>尖括号，改用空格和缩进的简写格式，例如pug（Jade）
+        
+    2.express设置模版 view engine setup
+        app.set('views', path.join(__dirname, 'views')); /*指定模版将被存储的文件夹*/
+        app.set('view engine', 'pug'); /*指定模版引擎pug*/
+        
+二、async库
+    1.async.parallel() --- 并行且异步执行第一个参数内所有函数
+       ”第一个参数：[ function(callback){..}, ..] 或者 { one: function(callback){..}, two: ..}
+       “第二个参数：回调函数cb(err, results)
+                  cb内第一个参数必为err，成功执行则err=null；第二参数为结果集，由前面的函数集运行结果组成
+    
+    2.async.series() --- 顺序且异步执行第一个参数内所有参数
+        “参数类型同async.parallel()
+        
+        
+    
   
