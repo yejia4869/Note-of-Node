@@ -1,0 +1,25 @@
+Assignment:
+  做一个静态的bank ATM界面:
+    1.主要功能有登陆、存取款和查询余额;
+    2.因为需要储存的信息单元很小,所以借助浏览器cookies来记录虚拟user的信息(账户名、密码、余额);
+    3.限制每次存取款的额度不超过10000;
+    4.功能间形成一个有效闭环——自我理解是页面间的有效跳转;
+    5.为了简化登陆流程,用户名和密码在第一次输入时自动完成注册;
+  自加限制:   
+    6.不允许出现同名的账户.
+
+HTML&CSS:
+  布局:
+    1.基本上使用了bootstrap的组件，每个页面都采用了栅栏流式布局container-fluid，和一些好看的表单控件；
+    2.五个页面: 登陆(login)、功能选择(business)、存款、取款、查询余额；
+    3.business页面: 采用了bootstrap的卡片标签(bootstrap-card)，即样式为上半部分为image，下半部分text和button；
+    4.用户误操作处理: 比如同名账户名、超额度的存取款。采用警示框(bootstrap-alert)弹出效果来提示user；
+  难点:
+    1.bootstrap的组件的scss样式具有最高优先级，link的css不能修改组件的内置样式，比如关于color、margin、padding等；
+    2.基于bootstrap组件的局部封装性，所以基本上时间花在了给元素水平垂直居中的定位上，狠狠补了一节css定位复习课。
+      position: absolute/relative; top/left; transform: translateX/translateY; 在bootstrap布局中可以说是通用的定位策略。
+      2'值得一提的是，单用top/left而不用transform有时不能达到预期效果。
+        网上搜到解释是：left/top的百分比值与父元素的宽高有关。如父元素width不设置，left有效果；而父元素heifht不设置，top没有效果。
+    3.
+
+JS
