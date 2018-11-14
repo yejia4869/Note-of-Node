@@ -20,6 +20,9 @@ HTML&CSS:
       position: absolute/relative; top/left; transform: translateX/translateY; 在bootstrap布局中可以说是通用的定位策略。
       2'值得一提的是，单用top/left而不用transform有时不能达到预期效果。
         网上搜到解释是：left/top的百分比值与父元素的宽高有关。如父元素width不设置，left有效果；而父元素heifht不设置，top没有效果。
-    3.
-
+    3.用阴影制作元素凸出效果：
+      box-shadow: Apx Bpx Cpx Dpx color;
+        A,B控制阴影偏移方向，A为水平方向，正右负左；B为垂直方向，正下负上。
+        C控制模糊距离，数值越大越模糊
+        D控制阴影尺寸，数值越大阴影厚度越大
 JS
