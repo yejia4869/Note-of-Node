@@ -67,16 +67,42 @@ JS
       getCookie: 
       getAllCookie: 
       
-    3.难点:
-      基于2的cookie实现，由于除登陆页面外，存取款和查询余额页面都需要account_name(即KEY)来操作cookie，但account_name仅仅在用户登陆
-      输入时出现，所以需要一种传输手段，使得account_name能共享于每个页面
-    
-  输入错误的处理
+    3.难点:基于2的cookie实现，由于除登陆页面外，存取款和查询余额页面都需要account_name(即KEY)来操作cookie，但account_name仅仅在用户登陆
+      输入时出现，所以需要一种传输手段，使得account_name能共享于每个页面。因此这里涉及一个同域页面间的信息传递的概念.
+      
+      同域: 两页面URL的协议，端口号和host(document.domain)一样
+      
+      尝试1: 使用教程见https://www.jianshu.com/p/d149c41af31a
+            原理详见https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage
+      
+            使用postMessage，如果两页面满足一下两条件的一种,就可使用postMessage
+      
+              条件1: 页面1使用window.open()打开页面2;
+              条件2: 页面1有iframe，iframe地址为页面2;
+            
+            经考虑使用了条件2: 
+            
+              //页面1
+              var iframe = window.frames[0] // 关系2
 
+              iframe.postMessage('向页面2发的数据，即account_name', '*')
 
+              // 接收页面2发送的数据
+              window.addEventListener("message", function(event) {
+                event.data // 收到的页面2发送的数据
+              })
 
+              //页面2
+              window.addEventListener("message", function(event) {
+                event.data // 页面1发送的数据，account_name
+                event.source.postMessage('向页面1发的数据', '*')
+              }, false)
 
-
-
-
-
+            失败原因: event.data只存在于监听器的域内，不能复制给外部变量(全局变量都不行..);而把cookie方法写进监听器域也不生效。
+            
+      尝试2: js获取url传递参数account_name，给每一个切换页面的button中的href值后添加'?account_name'，每个页面可以通过以下两条代码即可实现
+            信息(注意: url传递信息不安全，所以不要用它传递不加密的重要信息，在此例只添加一个accunt_name)
+   
+              var extra = window.location.search;
+              cur_account = extra.substring(1);
+  
