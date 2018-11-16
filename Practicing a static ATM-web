@@ -32,6 +32,51 @@ JS
     1.思路: 采取子cookie(KEY=key1=value1&key2=value2&...)的方法取代一般cookie(key=value),这样可实现密码和存款余额绑定在一个cookie内,
       进而实现多用户切换登陆; 将操作cookie方法封装在一个js文件里，在每个需要操作cookie的页面进行引入
     2.实现: 
-      setCookie: 
-      getCookie
+      setCookie: 新建与修改cookie，内部检查cookie是否已存在(getCookie()=null?)，不存在则调用setAllCookie()
+      
+          function setCookie(cname, subName, value){
+            /*为了简化，没有写path、dominan、expires等*/
+            /*如果cname存在则在原来位置修改，如不在则创建*/
+
+            var subCookies = this.getAllCookie(cname) || {};
+            subCookies[subName] = value;
+
+            this.setAllCookie(cname, subCookies);
+          }
+      setAllCookie: 该方法接受两个参数，第二个参数为想要添加/修改的子cookie.
+      
+          function setAllCookie(cname, subcookies){
+            var cookieText = cname + "=",
+              subcookieParts = new Array(),
+              subName;
+
+            for(subName in subcookies){
+              if(subName.length>0 && subcookies.hasOwnProperty(subName)){
+                subcookieParts.push(subName + "=" + subcookies[subName]);
+              }
+            }
+
+            if(subcookieParts.length>0){
+              cookieText += subcookieParts.join("&");
+
+            }
+
+            document.cookie = cookieText;
+
+          }
+      getCookie: 
+      getAllCookie: 
+      
+    3.难点:
+      基于2的cookie实现，由于除登陆页面外，存取款和查询余额页面都需要account_name(即KEY)来操作cookie，但account_name仅仅在用户登陆
+      输入时出现，所以需要一种传输手段，使得account_name能共享于每个页面
+    
   输入错误的处理
+
+
+
+
+
+
+
+
