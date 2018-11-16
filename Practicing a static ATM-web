@@ -106,3 +106,14 @@ JS
               var extra = window.location.search;
               cur_account = extra.substring(1);
   
+            小改进: url的account_name如果是汉字的话，会被转换UTF-8码，所以在查询余额页面想要显示account_name，就要进行转码
+            
+            escape不编码字符有69个：*，+，-，.，/，@，_，0-9，a-z，A-Z
+
+            encodeURI不编码字符有82个：!，#，$，&，'，(，)，*，+，,，-，.，/，:，;，=，?，@，_，~，0-9，a-z，A-Z
+
+            encodeURIComponent不编码字符有71个：!， '，(，)，*，-，.，_，~，0-9，a-z，A-Z
+            
+            encodeURIComponent是对于中文、韩文等象形文字使用最多的编码方法，所以对应的解码方法为decodeURIComponent(account_name)
+            
+            
