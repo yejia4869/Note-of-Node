@@ -26,3 +26,12 @@ HTML&CSS:
         C控制模糊距离，数值越大越模糊
         D控制阴影尺寸，数值越大阴影厚度越大
 JS
+  login页面:
+    1.阻止表单默认提交的行为ev.preventDefault(); 这样页面跳转才能有效window.location.href = url;
+  cookie:
+    1.思路: 采取子cookie(KEY=key1=value1&key2=value2&...)的方法取代一般cookie(key=value),这样可实现密码和存款余额绑定在一个cookie内,
+      进而实现多用户切换登陆; 将操作cookie方法封装在一个js文件里，在每个需要操作cookie的页面进行引入
+    2.实现: 
+      setCookie: 
+      getCookie
+  输入错误的处理
